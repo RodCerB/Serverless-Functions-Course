@@ -10,6 +10,10 @@ const items = require('../assets/data')
 exports.handler = async (event, context, callback) =>{
     
     return {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        // Headers é usado para corrigir aquele problema de CORS, não sendo acessível em outros locais. É necessário fazer em todos os functions que pretende liberar
         statusCode:200,
         body: JSON.stringify(items)
     }
