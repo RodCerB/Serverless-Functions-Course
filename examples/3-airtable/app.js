@@ -2,7 +2,8 @@ const result = document.querySelector('.result')
 
 const fetchProducts = async () => {
     try {
-        const {data} = await axios.get('/api/3-airtable')
+        // const {data} = await axios.get('/api/3-airtable')
+        const {data} = await axios.get('/api/3-z-complete')
         console.log(data)
         const products = data.map((product)=>{
             const {id,url,name,price} = product
