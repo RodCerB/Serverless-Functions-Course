@@ -4,7 +4,6 @@ const fetchProducts = async () => {
     try {
         // const {data} = await axios.get('/api/3-airtable')
         const {data} = await axios.get('/api/3-z-complete')
-        console.log(data)
         const products = data.map((product)=>{
             const {id,url,name,price} = product
             return `<a href="product.html?id=${id}" class="product">
