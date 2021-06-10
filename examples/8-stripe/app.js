@@ -1,15 +1,18 @@
 const purchase = [
+  // o preço das coisas nesse Stripe precisa ser em cents/centavos, entao é 19.99 dolares por exemplo
   { id: '1', name: 't-shirt', price: 1999 },
   { id: '2', name: 'shoes', price: 4999 },
 ]
 const total_amount = 6998
 const shipping_fee = 1099
-var stripe = Stripe('YOUR_PUBLIC_KEY')
+// Aqui vai a public key, por isso nao precisa ser salva no env, diferente da secret key
+var stripe = Stripe('pk_test_51J0ojODII5xaxgXmgJcinNBboIlnmiNLsnZIUlgq16mGocVkUhj6FH5rezdvP1xc7aGhg7z2OEBYjgkOjruoZ9h3003e4jzAm9')
 
 // The items the customer wants to buy
 
 // Disable the button until we have Stripe set up on the page
 document.querySelector('button').disabled = true
+// Para usar o stripe não podemos usar o axios, precisa ser no classico Fetch. Aqui já vemos algumas mudanças, como a necessidade de colocar o methodo de forma separada, além de ter que escrever no headers o tipo de conteúdo.
 fetch('/api/8-stripe', {
   method: 'POST',
   headers: {
